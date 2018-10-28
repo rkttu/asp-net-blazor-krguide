@@ -1,9 +1,9 @@
 # Table of contents
 
 * [ASP.NET Blazor 한국어 가이드](README.md)
+* [Blazor 시작하기](get-started.md)
 * [튜토리얼](tutorials/README.md)
   * [첫 Blazor 앱 만들기](tutorials/build-your-first-blazor-app.md)
-* [Blazor 시작하기](get-started.md)
 * [Blazor 소개](introduction/README.md)
   * [자주 묻는 질문들](introduction/faq.md)
 * [컴포넌트](components.md)
