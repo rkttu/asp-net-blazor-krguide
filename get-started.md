@@ -50,5 +50,5 @@ Blazor를 테스트해본 다음에는, 제품과 함께 제공되는 설문 조
 
 ### 다음 단계 <a id="whats-next"></a>
 
-[첫 Blazor 앱 만들기](blazor-1.md)
+[첫 Blazor 앱 만들기](tutorials/build-your-first-blazor-app.md)
 
