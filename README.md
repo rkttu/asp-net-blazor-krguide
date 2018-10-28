@@ -1,8 +1,6 @@
 ---
 description: >-
-  이 문서는 ASP.NET Blazor Preview Guide 문서를 한국어로 번역한 것으로, Experimental Release에 대한
-  문서를 커뮤니티를 위하여 정보 공유를 목적으로 미리 번역한 것입니다. 최신 버전의 내용을 반영하지 못할 수 있으나, 독자 여러분의 기여를
-  환영합니다.
+  이 문서는 ASP.NET Blazor Preview Guide 문서를 한국어로 번역한 것으로, Experimental Release에 대한 문서를 커뮤니티를 위하여 정보 공유를 목적으로 미리 번역한 것입니다. 최신 버전의 내용을 반영하지 못할 수 있으나, 독자 여러분의 기여를 환영합니다.
 ---
 
 # ASP.NET Blazor 한국어 가이드
