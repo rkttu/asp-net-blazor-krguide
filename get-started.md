@@ -8,7 +8,7 @@
 
 1. [.NET Core 2.1 SDK](https://go.microsoft.com/fwlink/?linkid=873092) \(2.1.402 이상\).
 2. [Visual Studio 2017](https://go.microsoft.com/fwlink/?linkid=873093) \(15.8 이상\)을 _ASP.NET과 웹 개발 워크로드_를 선택하여 함께 설치하세요.
-3. 최신 버전의 [Blazor 언어 서비스 확](https://go.microsoft.com/fwlink/?linkid=870389)을 Visual Studio 마켓플레이스를 통해 설치하세요.
+3. 최신 버전의 [Blazor 언어 서비스 확장팩](https://go.microsoft.com/fwlink/?linkid=870389)을 Visual Studio 마켓플레이스를 통해 설치하세요.
 4. 명령줄 도구에서 다음과 같이 Blazor 템플릿을 설치합니다:
 
    ```text
