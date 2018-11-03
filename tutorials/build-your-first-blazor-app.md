@@ -221,7 +221,7 @@ _FetchData.cshtml_ 파일 안의 `FetchData` 컴포넌트의 구현을 살펴보
 
 앱에 새로운 페이지를 추가하여 간단한 할 일 목록을 만들어 보도록 하겠습니다.
 
-1. _Pages_ 폴더에 _Todo.cshtml_ 이라는 빈 텍스트 파일을 하나 추가하니다.
+1. _Pages_ 폴더에 _Todo.cshtml_ 이라는 빈 텍스트 파일을 하나 추가합니다.
 2. 페이지에 다음과 같이 기본 마크업을 넣습니다.
 
    ```text
@@ -306,7 +306,7 @@ _FetchData.cshtml_ 파일 안의 `FetchData` 컴포넌트의 구현을 살펴보
 
     **Add todo** 버튼을 클릭해도 버튼에 이벤트 처리기를 지정한 것이 없기 때문에 아무런 일도 일어나지 않습니다.
 
-11. `AddTodo` 메서드를 `Todo` 컴포넌트에 추가하고, 버튼의 `onclick` 어트리뷰트를 사용하여 버튼의 클릭 이베트에 등록합니다.
+11. `AddTodo` 메서드를 `Todo` 컴포넌트에 추가하고, 버튼의 `onclick` 어트리뷰트를 사용하여 버튼의 클릭 이벤트에 등록합니다.
 
     ```text
     <input placeholder="Something todo" />
