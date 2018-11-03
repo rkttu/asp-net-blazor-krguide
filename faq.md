@@ -62,7 +62,7 @@ Blazor는 기존의 모던 SPA 앱 프레임워크인 React, Angular, 그리고 
 
 ## Blazor를 어떻게 테스트해볼 수 있나요?  <a id="how-can-i-try-out-blazor"></a>
 
-첫 Blazor 웹 앱을 만들기 위해서는 [Blazor 시작하기](https://github.com/rkttu/asp-net-blazor-krguide/tree/04b95928d79791362ce83ab60a3c5e19c86157eb/introduction/get-started.md) 문서를 참고하세요.
+첫 Blazor 웹 앱을 만들기 위해서는 [Blazor 시작하기](get-started.md) 문서를 참고하세요.
 
 ## 왜 Blazor는 "실험용" 프로젝트인가요?  <a id="why-is-blazor-an-experimental-project"></a>
 

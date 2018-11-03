@@ -459,7 +459,7 @@ dotnet publish -c Release
 
 배포 아티팩트가 _/bin/Release/&lt;target-framework&gt;/publish_ 폴더에 만들어지게 됩니다. _publish_ 폴더 안의 콘텐츠를 서버나 여러분의 호스팅 서비스로 복사하도록 합니다.
 
-더 자세한 정보는 [호스팅 및 배포](https://github.com/rkttu/asp-net-blazor-krguide/tree/3e61ef5c80612365f81919f605ec2574be9c2f08/tutorials/host-and-deploy/README.md) 토픽을 참고합니다.
+더 자세한 정보는 [호스팅 및 배포](host-and-deploy/README.md) 토픽을 참고합니다.
 
 ## 추가 리소스    <a id="additional-resources"></a>
 

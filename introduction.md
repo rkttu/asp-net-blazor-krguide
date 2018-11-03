@@ -76,7 +76,7 @@ Blazor 앱은 기존의 [.NET Standard](https://docs.microsoft.com/dotnet/standa
 
 ## JavaScript 연동  <a id="javascript-interop"></a>
 
-서드파티 JavaScript 라이브러리와 브라우저 API가 필요한 앱을 위하여, WebAssembly는 JavaScript와 연동할 수 있도록 설계되어있습니다. Blazor는 모든 JavaScript 라이브러리와 API를 사용할 수 있습니다. C\# 코드는 JavaScript 코드를 호출할 수 있으며, JavaScript 코드는 C\# 코드를 호출할 수 있습니다. 더 자세한 정보는, [JavaScript 연동](https://github.com/rkttu/asp-net-blazor-krguide/tree/04b95928d79791362ce83ab60a3c5e19c86157eb/introduction/javascript-interop.md) 문서를 참고하세요.
+서드파티 JavaScript 라이브러리와 브라우저 API가 필요한 앱을 위하여, WebAssembly는 JavaScript와 연동할 수 있도록 설계되어있습니다. Blazor는 모든 JavaScript 라이브러리와 API를 사용할 수 있습니다. C\# 코드는 JavaScript 코드를 호출할 수 있으며, JavaScript 코드는 C\# 코드를 호출할 수 있습니다. 더 자세한 정보는, [JavaScript 연동](javascript-interop.md) 문서를 참고하세요.
 
 ## 최적화  <a id="optimization"></a>
 
