@@ -4,7 +4,7 @@
 
 이 튜토리얼에서 여러분은 Blazor 앱을 단계별로 만들어가며, 빠르게 Blazor 프레임워크의 기본 기능을 배우게 됩니다.
 
-[샘플 코드를 보거나 다운로드하려면 여기를 클릭하세요.](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) \([다운로드하는 방법](https://blazor.net/docs/index.html#view-and-download-samples)\) [Blazor 시작하기](get-started.md) 문서를 참고하여 미리 준비해야 할 내용을 확인하세요.
+[샘플 코드를 보거나 다운로드하려면 여기를 클릭하세요.](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) \([다운로드하는 방법](https://blazor.net/docs/index.html#view-and-download-samples)\) [Blazor 시작하기](../get-started.md) 문서를 참고하여 미리 준비해야 할 내용을 확인하세요.
 
 Visual Studio에서 새 프로젝트를 만들려면:
 
@@ -34,7 +34,7 @@ Blazor 앱이 브라우저에 다음과 같이 표시됩니다:
 
 ![Blazor &#xC571; &#xD648;&#xD398;&#xC774;&#xC9C0;](https://user-images.githubusercontent.com/1874516/39509497-5515c3ea-4d9b-11e8-887f-019ea4fdb3ee.png)
 
-## 컴포넌트 만들기   <a id="build-components"></a>
+## 컴포넌트 만들기    <a id="build-components"></a>
 
 1. 앱의 페이지 3개 \(Home, Counter, FetchData\)를 각각 탐색합니다
 
@@ -97,7 +97,7 @@ Blazor 앱이 브라우저에 다음과 같이 표시됩니다:
 
    ![Exciting counter](https://user-images.githubusercontent.com/1874516/39509668-e8949a92-4d9b-11e8-91e9-b6a494695d92.png)
 
-## 컴포넌트 사용하기   <a id="use-components"></a>
+## 컴포넌트 사용하기    <a id="use-components"></a>
 
 컴포넌트가 정의된 후에는 또 다른 컴포넌트에서 새로 정의한 컴포넌트를 사용할 수 있습니다. 다른 컴포넌트를 사용하는 마크업은 보통의 HTML 태그와 다르지 않으며, 컴포넌트 형식의 이름을 지정하는 것만 다릅니다.
 
@@ -119,7 +119,7 @@ Blazor 앱이 브라우저에 다음과 같이 표시됩니다:
 
    ![Blazor &#xD648; &#xD398;&#xC774;&#xC9C0;&#xC5D0; &#xCE74;&#xC6B4;&#xD130; &#xCEF4;&#xD3EC;&#xB10C;&#xD2B8;&#xB97C; &#xCD94;&#xAC00;&#xD55C; &#xBAA8;&#xC2B5;](https://user-images.githubusercontent.com/1874516/39509718-224483f6-4d9c-11e8-9030-b4c7228d669d.png)
 
-## 컴포넌트 매개 변수   <a id="component-parameters"></a>
+## 컴포넌트 매개 변수    <a id="component-parameters"></a>
 
 컴포넌트는 또한 매개 변수를 가질 수 있으며, 컴포넌트 클래스를 정의할 때 private 접근자를 가진 멤버 앞에 `[Parameter]` 특성을 추가하는 방식으로 만들 수 있습니다. 마크업에서는 이렇게 추가한 매개 변수에 어트리뷰트를 통하여 값을 지정합니다.
 
@@ -155,11 +155,11 @@ Blazor 앱이 브라우저에 다음과 같이 표시됩니다:
 
    ![10&#xC529; &#xC99D;&#xAC00;&#xD558;&#xB294; Blazor &#xCE74;&#xC6B4;&#xD130;](https://user-images.githubusercontent.com/1874516/39509798-618f0720-4d9c-11e8-9125-3d4c634dff46.png)
 
-## 컴포넌트로 라우팅   <a id="route-to-components"></a>
+## 컴포넌트로 라우팅    <a id="route-to-components"></a>
 
 _Counter.cshtml_ 파일의 가장 위에 있는 `@page` 지시자는 이 컴포넌트가 요청을 라우팅할 수 있는 페이지 컴포넌트라는 것을 뜻합니다. 구체적으로, `Counter` 컴포넌트는 `/Counter` 로 보내지는 요청을 처리합니다. `@page` 지시자가 없으면, 컴포넌트는 라우팅된 요청을 처리할 수 없지만, 다른 컴포넌트에서 여전히 이 컴포넌트를 사용할 수는 있습니다.
 
-## 의존성 주입   <a id="dependency-injection"></a>
+## 의존성 주입    <a id="dependency-injection"></a>
 
 앱의 서비스 공급자와 함께 등록되는 서비스들은 [의존성 주입 \(DI\)](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)을 통하여 컴포넌트에서 사용할 수 있습니다. 서비스는 `@inject` 지시자를 사용하여 컴포넌트로 주입될 수 있습니다.
 
@@ -217,7 +217,7 @@ _FetchData.cshtml_ 파일 안의 `FetchData` 컴포넌트의 구현을 살펴보
 </table>
 ```
 
-## 할 일 목록 만들기   <a id="build-a-todo-list"></a>
+## 할 일 목록 만들기    <a id="build-a-todo-list"></a>
 
 앱에 새로운 페이지를 추가하여 간단한 할 일 목록을 만들어 보도록 하겠습니다.
 
@@ -430,7 +430,7 @@ _FetchData.cshtml_ 파일 안의 `FetchData` 컴포넌트의 구현을 살펴보
 
 ![&#xC644;&#xC131;&#xB41C; Blazor &#xD560; &#xC77C; &#xBAA9;&#xB85D;](https://user-images.githubusercontent.com/1874516/39512621-83406508-4da6-11e8-8244-5bae2ac6b22d.png)
 
-## 게시 및 배포하기   <a id="publish-and-deploy"></a>
+## 게시 및 배포하기    <a id="publish-and-deploy"></a>
 
 Visual Studio를 사용할 때에는, 다음의 단계를 진행하여 Blazor 할 일 목록 앱을 Azure로 게시할 수 있습니다:
 
@@ -461,7 +461,7 @@ dotnet publish -c Release
 
 더 자세한 정보는 [호스팅 및 배포](https://github.com/rkttu/asp-net-blazor-krguide/tree/3e61ef5c80612365f81919f605ec2574be9c2f08/tutorials/host-and-deploy/README.md) 토픽을 참고합니다.
 
-## 추가 리소스   <a id="additional-resources"></a>
+## 추가 리소스    <a id="additional-resources"></a>
 
 더 많은 Blazor의 기능을 사용하는 샘플 앱은, GitHub의 [Flight Finder 샘플](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor) 코드를 참고하세요.
 
