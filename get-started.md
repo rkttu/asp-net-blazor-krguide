@@ -2,7 +2,7 @@
 
 `노트: Blazor는 아직 기술 지원이 제공되지 않는 실험용 웹 프레임워크로, 실무 개발에 사용되어서는 안됩니다.`
 
-### 설치하기 <a id="setup"></a>
+## 설치하기  <a id="setup"></a>
 
 다음을 설치하세요:
 
@@ -37,7 +37,7 @@ dotnet run
 
 ![Blazor &#xC571; &#xD648;&#xD398;&#xC774;&#xC9C0;](https://msdnshared.blob.core.windows.net/media/2018/04/blazor-bootstrap-4.png)
 
-### 도움말과 피드백 <a id="help--feedback"></a>
+## 도움말과 피드백  <a id="help--feedback"></a>
 
 여러분의 피드백은 Blazor의 실험용 버전을 개발하는 데에 매우 요긴하게 사용됩니다. 만약 Blazor를 실행하면서 문제가 발생하거나 질문이 있다면, 꼭 알려주세요!
 
@@ -48,7 +48,7 @@ Blazor를 테스트해본 다음에는, 제품과 함께 제공되는 설문 조
 
 ![Blazor &#xC124;&#xBB38; &#xC870;&#xC0AC;](https://msdnshared.blob.core.windows.net/media/2018/05/blazor-survey-new.png)
 
-### 다음 단계 <a id="whats-next"></a>
+## 다음 단계  <a id="whats-next"></a>
 
 [첫 Blazor 앱 만들기](tutorials/build-your-first-blazor-app.md)
 

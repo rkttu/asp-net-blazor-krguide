@@ -2,5 +2,146 @@
 
 `노트: Blazor는 아직 기술 지원이 제공되지 않는 실험용 웹 프레임워크로, 실무 개발에 사용되어서는 안됩니다.`
 
-번역 중입니다.
+Blazor has [dependency injection \(DI\)](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) built-in. Apps can use built-in services by having them injected into components. Apps can also define custom services and make them available via DI.
+
+### What is dependency injection? <a id="what-is-dependency-injection"></a>
+
+DI is a technique for accessing services configured in a central location. This can be useful to:
+
+* Share a single instance of a service class across many components \(known as a _singleton_service\).
+* Decouple components from particular concrete service classes and only reference abstractions. For example, an interface `IDataAccess` is implemented by a concrete class `DataAccess`. When a component uses DI to receive an `IDataAccess` implementation, the component isn't coupled to the concrete type. The implementation can be swapped, perhaps to a mock implementation in unit tests.
+
+Blazor's DI system is responsible for supplying instances of services to components. DI also resolves dependencies recursively so that services themselves can depend on further services. DI is configured during startup of the app. An example is shown later in this topic.
+
+### Add services to DI <a id="add-services-to-di"></a>
+
+After creating a new app, examine the `Startup.ConfigureServices` method:
+
+```text
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add custom services here
+}
+```
+
+The `ConfigureServices` method is passed an [IServiceCollection](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection), which is a list of service descriptor objects \([ServiceDescriptor](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicedescriptor)\). Services are added by providing service descriptors to the service collection. The following code sample demonstrates the concept:
+
+```text
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<IDataAccess, DataAccess>();
+}
+```
+
+Services can be configured with the following lifetimes:
+
+| Method | Description |
+| :--- | :--- |
+| [Singleton](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicedescriptor.singleton#Microsoft_Extensions_DependencyInjection_ServiceDescriptor_Singleton__1_System_Func_System_IServiceProvider___0__) | DI creates a _single instance_ of the service. All components requiring this service receive a reference to this instance. |
+| [Transient](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicedescriptor.transient) | Whenever a component requires this service, it receives a _new instance_ of the service. |
+| [Scoped](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicedescriptor.scoped) | Blazor doesn't currently have the concept of DI scopes. `Scoped` behaves like `Singleton`. Therefore, prefer `Singleton` and avoid `Scoped`. |
+
+Blazor's DI system is based on the DI system in ASP.NET Core. For more information, see [Dependency injection in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
+
+### Default services <a id="default-services"></a>
+
+Blazor provides default services that are automatically added to the service collection of an app. The following table shows a list of the default services currently provided by Blazor's [BrowserServiceProvider](https://blazor.net/api/Microsoft.AspNetCore.Blazor.Browser.Services.BrowserServiceProvider.html).
+
+| Method | Description |
+| :--- | :--- |
+| [IUriHelper](https://blazor.net/api/Microsoft.AspNetCore.Blazor.Services.IUriHelper.html) | Helpers for working with URIs and navigation state \(singleton\). |
+| [HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) | Provides methods for sending HTTP requests and receiving HTTP responses from a resource identified by a URI \(singleton\). Note that this instance of `HttpClient` uses the browser for handling the HTTP traffic in the background. [HttpClient.BaseAddress](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient.baseaddress)is automatically set to the base URI prefix of the app. |
+
+Note that it is possible to use a custom services provider instead of the default `BrowserServiceProvider` that's added by the default template. A custom service provider doesn't automatically provide the default services listed in the table. Those services must be added to the new service provider explicitly.
+
+### Request a service in a component <a id="request-a-service-in-a-component"></a>
+
+Once services are added to the service collection, they can be injected into the components' Razor templates using the `@inject` Razor directive. `@inject` has two parameters:
+
+* Type name: The type of the service to inject.
+* Property name: The name of the property receiving the injected app service. Note that the property doesn't require manual creation. The compiler creates the property.
+
+Multiple `@inject` statements can be used to inject different services.
+
+The following example shows how to use `@inject`. The service implementing `Services.IDataAccess` is injected into the component's property `DataRepository`. Note how the code is only using the `IDataAccess` abstraction:
+
+```text
+@page "/customer-list"
+@using Services
+@inject IDataAccess DataRepository
+
+<ul>
+    @if (Customers != null)
+    {
+        @foreach (var customer in Customers)
+        {
+            <li>@customer.FirstName @customer.LastName</li>
+        }
+    }
+</ul>
+
+@functions {
+    private IReadOnlyList<Customer> Customers;
+
+    protected override async Task OnInitAsync()
+    {
+        // The property DataRepository received an implementation
+        // of IDataAccess through dependency injection. Use 
+        // DataRepository to obtain data from the server.
+        Customers = await DataRepository.GetAllCustomersAsync();
+    }
+}
+```
+
+Internally, the generated property \(`DataRepository`\) is decorated with the [InjectAttribute](https://blazor.net/api/Microsoft.AspNetCore.Blazor.Components.InjectAttribute.html)attribute. Typically, this attribute isn't used directly. If a base class is required for components and injected properties are also required for the base class, `InjectAttribute` can be manually added:
+
+```text
+public class ComponentBase : BlazorComponent
+{
+    // Blazor's dependency injection works even if using the
+    // InjectAttribute in a component's base class.
+    [Inject]
+    protected IDataAccess DataRepository { get; set; }
+    ...
+}
+```
+
+In components derived from the base class, the `@inject` directive isn't required. The `InjectAttribute` of the base class is sufficient:
+
+```text
+@page "/demo"
+@inherits ComponentBase
+
+<h1>...</h1>
+...
+```
+
+### Dependency injection in services <a id="dependency-injection-in-services"></a>
+
+Complex services might require additional services. In the prior example, `DataAccess` might require Blazor's default service `HttpClient`. `@inject` or the `InjectAttribute` can't be used in services. _Constructor injection_ must be used instead. Required services are added by adding parameters to the service's constructor. When dependency injection creates the service, it recognizes the services it requires in the constructor and provides them accordingly.
+
+The following code sample demonstrates the concept:
+
+```text
+public class DataAccess : IDataAccess
+{
+    // The constructor receives an HttpClient via dependency
+    // injection. HttpClient is a default service offered by Blazor.
+    public DataAccess(HttpClient client)
+    {
+        ...
+    }
+    ...
+}
+```
+
+Note the following prerequisites for constructor injection:
+
+* There must be one constructor whose arguments can all be fulfilled by dependency injection. Note that additional parameters not covered by DI are allowed if default values are specified for them.
+* The applicable constructor must be _public_.
+* There must only be one applicable constructor. In case of an ambiguity, DI throws an exception.
+
+### Additional resources <a id="additional-resources"></a>
+
+* [Dependency injection in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)
 
