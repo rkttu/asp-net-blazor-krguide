@@ -4,7 +4,7 @@
 
 이 튜토리얼에서 여러분은 Blazor 앱을 단계별로 만들어가며, 빠르게 Blazor 프레임워크의 기본 기능을 배우게 됩니다.
 
-[샘플 코드를 보거나 다운로드하려면 여기를 클릭하세요.](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) \([다운로드하는 방법](https://blazor.net/docs/index.html#view-and-download-samples)\). [Blazor 시작하기](get-started.md) 문서를 참고하여 미리 준비해야 할 내용을 확인하세요.
+[샘플 코드를 보거나 다운로드하려면 여기를 클릭하세요.](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) \([다운로드하는 방법](https://blazor.net/docs/index.html#view-and-download-samples)\) [Blazor 시작하기](get-started.md) 문서를 참고하여 미리 준비해야 할 내용을 확인하세요.
 
 Visual Studio에서 새 프로젝트를 만들려면:
 
@@ -20,7 +20,7 @@ Visual Studio에서 새 프로젝트를 만들려면:
 
 **노트**
 
-Visual Studio를 없이 Windows, macOS, 또는 Linux 명령줄에서 새 프로젝트를 만들려면 아래와 같이 입력하세요:
+Visual Studio 없이 Windows, macOS, 또는 Linux 명령줄에서 새 프로젝트를 만들려면 아래와 같이 입력하세요:
 
 ```text
 dotnet new blazor -o BlazorApp1
