@@ -83,39 +83,38 @@ Blazor의 미래에 대해서는 낙관적으로 보고 있습니다. 그러나 
 
 ### 웹 어셈블리는 모든 브라우저에서 지원됩니까? <a id="is-webassembly-supported-in-all-browsers"></a>
 
-Yes, WebAssembly has achieved cross-browser consensus and [all modern browsers now support WebAssembly](https://caniuse.com/#search=webassembly).
+네, WebAssembly는 크로스 브라우저에서 실행되기 위해 필요한 합의를 달성했고, [모든 최신 웹 브라우저들이 실행을 지원합니다.](https://caniuse.com/#search=webassembly).
 
-### Does Blazor work on mobile browsers? <a id="does-blazor-work-on-mobile-browsers"></a>
+### Blazor는 모바일 브라우저에서도 작동합니까? <a id="does-blazor-work-on-mobile-browsers"></a>
 
-Yes, [modern mobile browsers also support WebAssembly](https://caniuse.com/#search=webassembly).
+네, [최신 모바일 브라우저들도 WebAssembly를 지원합니다.](https://caniuse.com/#search=webassembly).
 
-### What about older browsers that don't support WebAssembly? For example, does Blazor work in IE? <a id="what-about-older-browsers-that-dont-support-webassembly-for-example-does-blazor-work-in-ie"></a>
+### WebAssebmly를 지원하지 않는 오래된 브라우저들의 경우는 어떻습니까? 예를 들어, Blazor는 IE에서도 동작합니까? <a id="what-about-older-browsers-that-dont-support-webassembly-for-example-does-blazor-work-in-ie"></a>
 
-For older browsers that don't support WebAssembly, Blazor falls back to using an asm.js-based .NET runtime. Using asm.js is slower and has a larger download size but is still quite functional.
+WebAssembly를 지원하지 않는 오래된 브라우저들에 대해서, Blazor는 더 느리고 더 많은 용량을 다운로드해야 하는 대신, 꽤 정상적인 기능을 보장하는 asm.js 기반의 .NET 런타임을 사용하도록 대처합니다.
 
-### Can I use .NET Standard libraries with Blazor? <a id="can-i-use-net-standard-libraries-with-blazor"></a>
+### .NET Standard 라이브러리를 Blazor에서 사용할 수 있습니까? <a id="can-i-use-net-standard-libraries-with-blazor"></a>
 
-Yes, the .NET runtime used for Blazor supports .NET Standard 2.0. APIs that aren't supported in the browser throw _Not Supported_ exceptions.
+네, Blazor를 위하여 사용되는 .NET 런타임은 .NET Standard 2.0을 지원합니다. 단, 브라우저 안에서 지원되지 않는 API들은 _기능이 지원되지 않음을 알리는 예외_ 를 발생시킵니다.
 
-### Don't you need features like garbage collection and threading added to WebAssembly to make this work? <a id="dont-you-need-features-like-garbage-collection-and-threading-added-to-webassembly-to-make-this-work"></a>
+### Blazor가 동작하려면 WebAssembly에 가비지 수집 및 다중 스레드와 같은 기능이 추가되어야 하지 않습니까? <a id="dont-you-need-features-like-garbage-collection-and-threading-added-to-webassembly-to-make-this-work"></a>
 
-No, WebAssembly in its current state is sufficient. The .NET runtime handles its own garbage collection and threading concerns.
+아니오, WebAssembly의 현재 상태로도 충분합니다. .NET 런타임이 자체적으로 가비지 수집과 다중 스레드에 대한 것을 처리합니다.
 
-### Can I use existing JavaScript libraries with Blazor? <a id="can-i-use-existing-javascript-libraries-with-blazor"></a>
+### 기존 JavaScript 라이브러리를 Blazor와 함께 사용할 수 있습니까? <a id="can-i-use-existing-javascript-libraries-with-blazor"></a>
 
-Yes, Blazor apps can call into JavaScript through JavaScript interop APIs.
+예, Blazor 앱은 JavaScript를 JavaScript 상호 연동 API를 통하여 호출할 수 있습니다.
 
-### Can I access the DOM from a Blazor app? <a id="can-i-access-the-dom-from-a-blazor-app"></a>
+### Blazor 앱에서 DOM에 접근할 수 있습니까? <a id="can-i-access-the-dom-from-a-blazor-app"></a>
 
-You can access the DOM through JavaScript interop from .NET code. However, Blazor is a component-based framework that minimizes the need to access the DOM directly.
+.NET 코드에서 JavaScript 연동을 통해 DOM에 접근할 수는 있습니다. 하지만, Blazor는 DOM에 직접 접근해야 할 필요성을 최소화하는 컴포넌트 기반 프레임워크입니다.
 
-### Why Mono? Why not .NET Core or CoreRT? <a id="why-mono-why-not-net-core-or-corert"></a>
+### 왜 .NET Core나 CoreRT 대신 Mono를 택했나요? <a id="why-mono-why-not-net-core-or-corert"></a>
 
-[Mono](http://www.mono-project.com/) is a Microsoft-sponsored open source implementation of the .NET Framework. Mono is used by [Xamarin](https://www.xamarin.com/) to build native client apps for Android, iOS, and macOS. Mono is also used by [Unity](https://unity3d.com/) for game development. Microsoft's Xamarin team [announced their plans](http://www.mono-project.com/news/2017/08/09/hello-webassembly/) to add support for WebAssembly to Mono, and they've been making steady progress \([Mono and WebAssembly - Updates on Static Compilation 1/16/2018](http://www.mono-project.com/news/2018/01/16/mono-static-webassembly-compilation/)\). Because Blazor is a client-side web UI framework targeted at WebAssembly, Mono is a natural fit.
+[Mono](http://www.mono-project.com/)는 Microsoft가 후원하는 .NET Framework의 오픈 소스 구현체입니다. Mono는  [Xamarin](https://www.xamarin.com/) 이 네이티브 클라이언트 앱을 Android, iOS, 그리고 macOS를 만들기 위하여 사용하고 있습니다. 또한 Mono는 [Unity](https://unity3d.com/) 가 게임 개발을 위하여 사용하고 있습니다. Microsoft의 Xamarin 팀은 Mono에 WebAssembly를 추가하기 위한 [계획을 발표하였고,](http://www.mono-project.com/news/2017/08/09/hello-webassembly/) 꾸준히 진행하고 있습니다. \([Mono와 WebAssembly - 정적 컴파일에 관한 소식 1/16/2018](http://www.mono-project.com/news/2018/01/16/mono-static-webassembly-compilation/)\). Blazor는 WebAssembly에 대해 동작하는 클라이언트 측 웹 UI 프레임워크이기 때문에, Mono를 선택하는 것이 가장 적절합니다.
 
-By comparison, [.NET Core](https://www.microsoft.com/net/learn/get-started/windows) is primarily used for server apps and for cross-platform console apps. .NET Core can be used for creating an ASP.NET Core backend for a Blazor app but not for building the client app itself. [CoreRT](https://github.com/dotnet/corert) is a .NET Core runtime optimized for AoT compilation; and while it has WebAssembly aspirations, the project is still a work-in-progress and not a shipping product.
+반면에, [.NET Core](https://www.microsoft.com/net/learn/get-started/windows)는 주로 서버 앱과 크로스 플랫폼 콘솔 앱에 사용되는 것에 초점이 맞추어져 있습니다. .NET Core는 Blazor 앱을 위한 ASP.NET Core 백엔드를 만들 수 있지만, 클라이언트 앱 그 자체를 만드는 것은 아닙니다. [CoreRT](https://github.com/dotnet/corert)는 AoT 컴파일에 최적화된 .NET Core 런타임이며, WebAssembly에 대한 지원 계획도 가지고는 있지만, 아직 개발이 진행 중이며 완성된 제품이 아닙니다.
 
-### Where did the name "Blazor" come from? <a id="where-did-the-name-blazor-come-from"></a>
+### "Blazor" 라는 이름은 어디에서 온 것입니까? <a id="where-did-the-name-blazor-come-from"></a>
 
-Blazor makes heavy use of [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor?view=aspnetcore-2.1), a markup syntax for HTML and C\#. **Browser + Razor = Blazor!**When pronounced, it's also the name of a swanky jacket worn by hipsters that have excellent taste in fashion, style, and programming languages.
-
+Blazor는 [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor?view=aspnetcore-2.1)라는 HTML과 C\#을 위한 마크업 언어를 매우 많이 사용합니다. **즉, Browser + Razor = Blazor 입니다!** 발음할 때에도, 패션, 스타일, 그리고 프로그래밍 언어에 대한 탁월한 감각을 지닌 힙스터들이 즐겨 입는 멋진 재킷의 이름과도 비슷합니다.
