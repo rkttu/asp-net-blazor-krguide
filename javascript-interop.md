@@ -8,12 +8,12 @@ Blazor 앱에서는 .NET에서 자바스크립트 함수를 호출하고 자바�
 
 Blazor .NET 코드에서 JavaScript 함수를 호출해야하는 경우가 있습니다. 예를 들어, 자바스크립트 호출(call)을 통해 브라우저 기능을 노출하거나 자바스크립트 라이브러리의 기능을 Blazor 앱으로 노출시킬 수 있습니다.
 
-To call into JavaScript from .NET, use the `IJSRuntime` abstraction, which is accessible from `JSRuntime.Current`. The `InvokeAsync<T>` method on `IJSRuntime` takes an identifier for the JavaScript function you wish to invoke along with any number of JSON-serializable arguments. The function identifier is relative to the global scope \(`window`\). If you wish to call `window.someScope.someFunction`, the identifier is `someScope.someFunction`. There's no need to register the function before it's called. The return type `T` must also be JSON serializable.
+.NET에서 자바스크립트를 호출하려면 `JSRuntime.Current`에서 액세스할 수 있는 `IJSRuntime` 추상화를 사용하십시오. `IJSRuntime`의 `InvokeAsync <T>`메소드는 여러 개의 JSON 직렬화가능(serializable) 인수와 함께 호출하고자하는 자바스크립트 함수의 식별자 갖습니다. 함수 식별자는 전역 범위 \ (`window` \)에 따라 달라집니다. `window.someScope.someFunction`을 호출하려면 식별자는 someScope.someFunction이 됩니다. 함수가 호출되기 전에는 함수를 등록할 필요가 없습니다. 또한 반환 유형 'T'는 JSON을 직렬화 할 수 있어야합니다.
 
-In the sample app, two JavaScript functions are available to the client-side app that interact with the DOM to receive user input and display a welcome message:
+셈플 앱에서 다음 두 가지의 자바스크립트 함수를 클라이언트 측 앱에 사용하여 사용자의 입력을 받고 환영 인사말을 표시하기 위해 DOM과 상호작용도록 합니다.
 
-* `showPrompt` – Produces a prompt to accept user input \(the user's name\) and returns the name to the caller.
-* `displayWelcome` – Assigns a welcome message from the caller to a DOM object with an `id` of `welcome`.
+* `showPrompt` – 사용자의 입력\(사용자의 이름\)을 받기위한 프롬프트를 생성하고 호출자에게 해당 이름을 반환합니다.
+* `displayWelcome` – 호출자의 환영 인사말을 `id`가 `welcome`인 DOM 객체에 할당합니다.
 
 _wwwroot/exampleJsInterop.js_:
 
