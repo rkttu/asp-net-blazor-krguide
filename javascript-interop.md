@@ -2,11 +2,11 @@
 
 `노트: Blazor는 아직 기술 지원이 제공되지 않는 실험용 웹 프레임워크로, 실무 개발에 사용되어서는 안됩니다.`
 
-A Blazor app can invoke JavaScript functions from .NET and .NET methods from JavaScript code.
+Blazor 앱에서는 .NET에서 자바스크립트 함수를 호출하고 자바스크립트 코드에서 .NET 메서드를 호출할 수 있습니다.
 
-### Invoke JavaScript functions from .NET methods <a id="invoke-javascript-functions-from-net-methods"></a>
+### .NET 메서드에서 자바스크립트 함수 호출 <a id="invoke-javascript-functions-from-net-methods"></a>
 
-There are times when Blazor .NET code is required to call a JavaScript function. For example, a JavaScript call can expose browser capabilities or functionality from a JavaScript library to the Blazor app.
+Blazor .NET 코드에서 JavaScript 함수를 호출해야하는 경우가 있습니다. 예를 들어, 자바스크립트 호출(call)을 통해 브라우저 기능을 노출하거나 자바스크립트 라이브러리의 기능을 Blazor 앱으로 노출시킬 수 있습니다.
 
 To call into JavaScript from .NET, use the `IJSRuntime` abstraction, which is accessible from `JSRuntime.Current`. The `InvokeAsync<T>` method on `IJSRuntime` takes an identifier for the JavaScript function you wish to invoke along with any number of JSON-serializable arguments. The function identifier is relative to the global scope \(`window`\). If you wish to call `window.someScope.someFunction`, the identifier is `someScope.someFunction`. There's no need to register the function before it's called. The return type `T` must also be JSON serializable.
 
