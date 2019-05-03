@@ -64,7 +64,7 @@ window.exampleJsFunctions = {
 
 스크립트 태그는 동적으로 업데이트 되지 않으므로 컴포넌트 파일에 스크립트 태그를 추가하지 마십시오.
 
-.NET 메서드에서는 `IJSRuntime`의 `InvokeAsync<T>`메소드를 호출하여 자바스크립트 함수를 연동합니다.
+.NET 메드에서는 `IJSRuntime`의 `InvokeAsync<T>`메소드를 호출하여 자바스크립트 함수를 연동합니다.
 
 예제 앱에서는 두 개의 C\# 메소드, `Prompt`와 `Display`를 사용하여 `showPrompt`와 `displayWelcome` 자바스크립트 함수를 다음과 같이 호출합니다.
 
@@ -99,15 +99,16 @@ public class ExampleJsInterop
 }
 ```
 
-The `IJSRuntime` abstraction is asynchronous to allow for server-side scenarios. If the app runs client-side and you want to invoke a JavaScript function synchronously, downcast to `IJSInProcessRuntime` and call `Invoke<T>` instead. We recommend that most JavaScript interop libraries use the async APIs to ensure the libraries are available in all Blazor scenarios, client-side or server-side.
+`IJSRuntime` 추상화는 서버 측 시나리오를 허용하는 비동기 방식입니다. 이 앱이 클라이언트 측에서 실행되고 자바스크립트 함수를 동기적으로 호출하려면 `IJSInProcessRuntime`으로 다운 캐스트하고 대신 `Invoke <T>`를 호출하십시오. 대부분의 자바스크립트 연동 라이브러리는 클라이언트 측 또는 서버 측의 모든 Blazor 시나리오에서 라이브러리를 사용할 수 있도록 비동기 API를 사용하는 것이 좋습니다.
 
-The sample app includes a component to demonstrate JS interop. The component:
 
-* Receives user input via a JS prompt.
-* Returns the text to the component for processing.
-* Calls a second JS function that interacts with the DOM to display a welcome message.
+예제 앱에는 자바스크립트 연동을 보여주는 컴포넌트가 포함되어 있습니다. 컴포넌트는 다음과 같습니다. 
 
-_Pages/JSInterop.cshtml_:
+* 자바스크립트 프롬프트를 통해 사용자 입력을 받습니다.
+* 처리를 위한 컴포넌트로 텍스트를 반환합니다.
+* 환영 인사말을 표시하기 위해 DOM과 상호 작용하는 두 번째 자바스크립트 함수를 호출합니다.
+
+_Pages/JSInterop.cshtml_ 는 다음과 같습니다. 
 
 ```text
 @page "/JSInterop"
