@@ -101,10 +101,10 @@ public class ExampleJsInterop
 
 `IJSRuntime` 추상화는 서버 측 시나리오를 허용하는 비동기 방식입니다. 이 앱이 클라이언트 측에서 실행되고 자바스크립트 함수를 동기적으로 호출하려면 `IJSInProcessRuntime`으로 다운 캐스트하고 대신 `Invoke <T>`를 호출하십시오. 대부분의 자바스크립트 연동 라이브러리는 클라이언트 측 또는 서버 측의 모든 Blazor 시나리오에서 라이브러리를 사용할 수 있도록 비동기 API를 사용하는 것이 좋습니다.
 
-예제 앱에는 자바스크립트 연동을 보여주는 컴포넌트가 포함되어 있습니다. 컴포넌트는 다음과 같습니다.
+예제 앱에는 자바스크립트 연동을 보여주는 구성요소가 포함되어 있습니다. 구성요소는 다음과 같습니다.
 
 * 자바스크립트 프롬프트를 통해 사용자 입력을 받습니다.
-* 처리를 위한 컴포넌트로 텍스트를 반환합니다.
+* 처리를 위한 구성요소로 텍스트를 반환합니다.
 * 환영 인사말을 표시하기 위해 DOM과 상호 작용하는 두 번째 자바스크립트 함수를 호출합니다.
 
 _Pages/JSInterop.cshtml_ 는 다음과 같습니다. 
@@ -133,19 +133,19 @@ _Pages/JSInterop.cshtml_ 는 다음과 같습니다.
 }
 ```
 
-1. When `TriggerJsPrompt` is executed by selecting the component's **Trigger JavaScript Prompt** button, the `ExampleJsInterop.Prompt` method in C\# code is called.
-2. The `Prompt` method executes the JavaScript `showPrompt` function provided in the _wwwroot/exampleJsInterop.js_ file.
-3. The `showPrompt` function accepts user input \(the user's name\), which is HTML-encoded and returned to the `Prompt` method and ultimately back to the component. The component stores the user's name in a local variable, `name`.
-4. The string stored in `name` is incorporated into a welcome message, which is passed to a second C\# method, `ExampleJsInterop.Display`.
-5. `Display` calls a JavaScript function, `displayWelcome`, which renders the welcome message into a heading tag.
+1. 구성요소의 **Trigger JavaScript Prompt** 버튼을 선택하여 `TriggerJsPrompt`를 실행하면, C\# 코드의 `ExampleJsInterop.Prompt`메소드가 호출됩니다.
+2. `Prompt`메소느는 _wwwroot/exampleJsInterop.js_ 파일에 있는 `showPrompt` 자바스크립트 함수를 실행합니다.
+3. 이 `showPrompt` 함수는 사용자 입력\(사용자의 이름\)을 받습니다. 사용자 입력은 HTML 인코딩되어 `Prompt` 메소드로 반환되며 궁극적으로 구성요소로 반환됩니다. 구성요소는 사용자의 이름을 로컬 변수 `name`에 저장합니다.
+4. `name`에 저장된 문자열은 환영 인사말에 통합되어 두번째 C\# 메소드인 `ExampleJsInterop.Display`에 전달됩니다.
+5. `Display`는 `displayWelcome` 자바스크립트 함수를 호출하고, 이 함수에서는 환영 메시지를 제목 태그에 렌더링 합니다.
 
-### Capture references to elements <a id="capture-references-to-elements"></a>
+### 요소에 대한 참조 캡처 <a id="capture-references-to-elements"></a>
 
-Some [JavaScript interop](https://blazor.net/docs/javascript-interop.html) scenarios require references to HTML elements. For example, a UI library may require an element reference for initialization, or you might need to call command-like APIs on an element, such as `focus` or `play`.
+일부 [자바스크립트 연동](https://blazor.net/docs/javascript-interop.html) 시나리오에서는 HTML요소의 참조가 필요합니다. 예를 들면, UI 라이브러리에서는 초기화를 위한 요소의 참조가 필요하거나 `focus`나 `play`와 같은 요소에 대해 API와 같은 명령을 호출해야할 수도 있습니다.
 
-You can capture references to HTML elements in a component by adding a `ref` attribute to the HTML element and then defining a field of type `ElementRef` whose name matches the value of the `ref` attribute.
+HTML 요소에 `ref` 속성을 추가하고 이름이 `ref` 속성의 값과 일치하는 `ElementRef` 유형의 필드를 정의함으로써 구성요소에 있는 HTML 요소의 참조를 캡처 할 수 있습니다.
 
-The following example shows capturing a reference to the username input element:
+다음 예제는 username input 요소의 참조를 캡처하는 방법을 보여줍니다.
 
 ```text
 <input ref="username" ... />
@@ -155,9 +155,9 @@ The following example shows capturing a reference to the username input element:
 }
 ```
 
-**NOTE**
+**주의**
 
-Do **not** use captured element references as a way of populating the DOM. Doing so may interfere with Blazor's declarative rendering model.
+캡처 된 요소의 참조를 DOM을 채우는 방법으로 **사용하지 마십시오**. 그렇게 하면 Blazor의 선언적 렌더링 모델이 영향을 받을 수 있습니다.
 
 As far as .NET code is concerned, an `ElementRef` is an opaque handle. The _only_ thing you can do with it is pass it through to JavaScript code via JavaScript interop. When you do so, the JavaScript-side code receives an `HTMLElement` instance, which it can use with normal DOM APIs.
 
